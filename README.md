@@ -6,5 +6,8 @@ cakephp3 login認証ブログサイト
 
 ## sample user
 user name: test
+
 email: test@test.com
+
 password: password
+
