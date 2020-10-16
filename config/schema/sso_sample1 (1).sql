@@ -1,14 +1,13 @@
 -- phpMyAdmin SQL Dump
--- version 5.0.1
+-- version 5.0.2
 -- https://www.phpmyadmin.net/
 --
 -- ホスト: 127.0.0.1
--- 生成日時: 2020-10-11 15:53:25
--- サーバのバージョン： 10.4.11-MariaDB
--- PHP のバージョン: 7.4.1
+-- 生成日時: 2020-10-16 03:30:10
+-- サーバのバージョン： 10.4.14-MariaDB
+-- PHP のバージョン: 7.3.22
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
-SET AUTOCOMMIT = 0;
 START TRANSACTION;
 SET time_zone = "+00:00";
 
@@ -19,8 +18,10 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- データベース: `cake_blog`
+-- データベース: `sso_sample1`
 --
+CREATE DATABASE IF NOT EXISTS `sso_sample1` DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci;
+USE `sso_sample1`;
 
 -- --------------------------------------------------------
 
