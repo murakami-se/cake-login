@@ -9,6 +9,7 @@
   <?= $this->Form->button(__('Login')); ?>
   <?= $this->Form->end() ?>
 </div>
-<div class="text-center">
+<div class="">
     <?= $this->Html->link('create', 'users/add') ?>
+    <?= $this->Html->link('sso-login', 'http://twg-dev-auth/authorization?response_type=token&client_id=19273204454143&redirect_uri=https://twg-dev-sample1/users/twg-login-callback?&scope=openid+email+profile&nonce=lkdjafjlkdsja') ?>
 </div>
