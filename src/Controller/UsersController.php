@@ -14,6 +14,15 @@ use Cake\Routing\Router;
  */
 class UsersController extends AppController
 {
+    public function initialize()
+    {
+        parent::initialize();
+
+        $components = array('Auth');
+        $user = $this->Auth->user();
+        $this->set(compact('user'));
+    }
+
     /**
      * Index method
      *
@@ -115,7 +124,7 @@ class UsersController extends AppController
     {
         parent::beforeFilter($event);
         // auth off
-        $this->Auth->allow(['add', 'twgLoginCallback']);
+        $this->Auth->allow(['login', 'add', 'twgLoginCallback']);
     }
 
     /**

@@ -12,6 +12,15 @@ use App\Controller\AppController;
  */
 class ArticlesController extends AppController
 {
+    public function initialize()
+    {
+        parent::initialize();
+
+        $components = array('Auth');
+        $user = $this->Auth->user();
+        $this->set(compact('user'));
+    }
+    
     /**
      * Index method
      *

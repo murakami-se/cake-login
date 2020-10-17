@@ -62,8 +62,7 @@ class AppController extends Controller
             ],
             'logoutRedirect' => [
                 'controller' => 'Users',
-                'action' => 'login',
-                'home'
+                'action' => 'login'
             ],
             'authenticate' => [
                 'Form' => [
@@ -71,9 +70,5 @@ class AppController extends Controller
                 ]
             ],
         ]);
-
-        $components = array('Auth');
-        $user = $this->Auth->user();
-        $this->set(compact('user'));
     }
 }
