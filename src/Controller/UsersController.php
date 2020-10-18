@@ -125,6 +125,10 @@ class UsersController extends AppController
         parent::beforeFilter($event);
         // auth off
         $this->Auth->allow(['login', 'add', 'twgLoginCallback']);
+        // csrf off
+        if($this->request->action == 'twgLoginCallback'){
+            $this->getEventManager()->off($this->Csrf);
+        }
     }
 
     /**
@@ -154,6 +158,43 @@ class UsersController extends AppController
 
     public function twgLoginCallback()
     {
-        // アクセストークン取得
+        if ($this->request->getData())
+        {
+            // アクセストークン取得
+            $token = $this->request->getData('access_token');
+            // curlコマンドでユーザー情報取得
+            $headers = ["Authorization: Bearer " . $token ];
+            $ch = curl_init("http://twg-dev-res/api/userinfo");
+            curl_setopt($ch, CURLOPT_HTTPHEADER, $headers);
+            curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+            $result = curl_exec($ch);
+            curl_close($ch);
+            // ユーザー情報が取得できた場合
+            if ($result)
+            {
+                $result = json_decode($result, true);
+                // メールアドレスで登録状況確認
+                $user = $this->Users->find()->where(['email' => $result['email']])->first();
+                if ($user)
+                {
+                    // 登録済みの場合、ログイン
+                    $this->Auth->setUser($user);
+                } else {
+                    // 登録されていない場合、パスワードを補完してユーザー登録
+                    $pw = substr(str_shuffle('1234567890abcdefghijklmnopqrstuvwxyz'), 0, 8);
+                    $user = $this->Users->newEntity();
+                    $user->name = $result['name'];
+                    $user->email = $result['email'];
+                    $user->password = $pw;
+                    if ($this->Users->save($user)) {
+                        // 登録に成功した場合、ログイン
+                        $this->Auth->setUser($user);
+                    } else {
+                        $this->Flash->error(__('The user could not be saved. Please, try again.'));
+                    }
+                }
+                return $this->redirect($this->Auth->redirectUrl());
+            }
+        }
     }
 }
