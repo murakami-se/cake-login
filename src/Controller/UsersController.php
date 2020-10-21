@@ -164,7 +164,7 @@ class UsersController extends AppController
             $token = $this->request->getData('access_token');
             // curlコマンドでユーザー情報取得
             $headers = ["Authorization: Bearer " . $token ];
-            $ch = curl_init("http://twg-dev-res/api/userinfo");
+            $ch = curl_init("http://res.comee.ml/api/userinfo");
             curl_setopt($ch, CURLOPT_HTTPHEADER, $headers);
             curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
             $result = curl_exec($ch);

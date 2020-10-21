@@ -11,5 +11,5 @@
 </div>
 <div class="">
     <?= $this->Html->link('create', 'users/add') ?>
-    <?= $this->Html->link('sso-login', 'http://twg-dev-auth/authorization?response_type=token&client_id=19273204454143&response_mode=form_post&redirect_uri=https://twg-dev-sample1/users/twg-login-callback?&scope=openid+email+profile&nonce=lkdjafjlkdsja') ?>
+    <?= $this->Html->link('sso-login', 'http://auth.comee.ml/authorization?response_type=token&client_id=19273204454143&response_mode=form_post&redirect_uri=https://sample-site-a.comee.ml/users/twg-login-callback&scope=openid+email+profile&nonce=lkdjafjlkdsja') ?>
 </div>
