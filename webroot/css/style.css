@@ -522,3 +522,16 @@ table td {
     vertical-align: top;
     word-break: break-all;
 }
+
+.btn {
+    display       : inline-block;
+    margin-right: 20px;
+    font-size     : 16pt;        /* 文字サイズ */
+    text-align    : center;      /* 文字位置   */
+    cursor        : pointer;     /* カーソル   */
+    padding       : 12px 12px;   /* 余白       */
+    color         : #ffffff;     /* 文字色     */
+    line-height   : 1em;         /* 1行の高さ  */
+    transition    : .3s;         /* なめらか変化 */
+    border        : 1px solid #000066;    /* 枠の指定 */
+}
